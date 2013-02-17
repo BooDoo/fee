@@ -1,9 +1,10 @@
 {
   "name": "eliza",
   "version": "0.0.1",
-  "description": "Minimal Node.js framework",
+  "description": "Minimal web app generator",
   "keywords": [
-    "framework"
+    "framework",
+    "generator"
   ],
   "author": "Ben Reinhart <benjreinhart@gmail.com>",
   "dependencies": {
