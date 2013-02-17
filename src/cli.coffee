@@ -12,7 +12,7 @@ program.version JSON.parse(fs.readFileSync("#{ ROOT }/package.json", 'utf8')).ve
 # New project
 program
   .command('new <name> [path]')
-  .description('Create a new application <name> in cwd or optionally at <path>')
+  .description('Create a new application <name>')
   .action (name, path) ->
     path = "#{ resolvePath(path) }/#{ name }"
     Project.create(path)
@@ -20,8 +20,8 @@ program
 
 # New component
 program
-  .command('component <component> [path]')
-  .description('Generate component <component>, optionally at <path>/components/<component>')
+  .command('cmpt <cmpt> [path]')
+  .description('Generate component <cmpt>, optionally at <path>/components/<component>')
   .action (component, path) ->
     project = new Project resolvePath(path)
     project.component(component)

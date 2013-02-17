@@ -15,12 +15,12 @@ cwd = process.cwd();
 
 program.version(JSON.parse(fs.readFileSync("" + ROOT + "/package.json", 'utf8')).version);
 
-program.command('new <name> [path]').description('Create a new application <name> in cwd or optionally at <path>').action(function(name, path) {
+program.command('new <name> [path]').description('Create a new application <name>').action(function(name, path) {
   path = "" + (resolvePath(path)) + "/" + name;
   return Project.create(path);
 });
 
-program.command('component <component> [path]').description('Generate component <component>, optionally at <path>/components/<component>').action(function(component, path) {
+program.command('cmpt <cmpt> [path]').description('Generate component <cmpt>, optionally at <path>/components/<component>').action(function(component, path) {
   var project;
   project = new Project(resolvePath(path));
   return project.component(component);
