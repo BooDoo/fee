@@ -1,1 +1,2 @@
-throw "\nEliza provides only a command line interface. Please install with -g:\n\nnpm install -g git://github.com/benjreinhart/eliza.git\n"
+require('coffee-script');
+module.exports = require(__dirname + '/src/project');

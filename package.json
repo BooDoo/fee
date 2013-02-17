@@ -7,11 +7,11 @@
   ],
   "author": "Ben Reinhart <benjreinhart@gmail.com>",
   "dependencies": {
-    "commander": "1.1.1"
+    "commander": "1.1.1",
+    "mkdirp": ">=0.3.4",
+    "coffee-script": ">=1.4.0"
   },
-  "devDependencies": {
-    "coffee-script": "*"
-  },
+  "devDependencies": {},
   "bin": {
     "eliza": "./bin/eliza"
   },
