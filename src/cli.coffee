@@ -7,7 +7,6 @@ cwd = process.cwd()
 
 program.version JSON.parse(fs.readFileSync("#{ ROOT }/package.json", 'utf8')).version
 
-
 program
   .command('new <name> [path]')
   .description('Create a new application <name> in cwd or at <path> if <path> is supplied')

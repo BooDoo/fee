@@ -1,16 +1,48 @@
-mkdirp = require 'mkdirp'
+fs       = require 'fs'
+Path     = require 'path'
+mkdirp   = require 'mkdirp'
+Mustache = require 'mustache'
+
+SRC_PATH = "#{ __dirname }/src_files"
+
 
 exports.create = (path) ->
-  mkdirp path
-
-  createSubDirectories(path)
+  (new Project(path)).create()
 
 
+class Project
+  constructor: (@path) ->
+    @name = Path.basename(@path)
 
-###########
-# PRIVATE #
-###########
+  create: ->
+    mkdirp @path
 
-createSubDirectories = (path) ->
-  for directory in ['core', 'components', 'public']
-    mkdirp "#{ path }/#{ directory }"
+    @createTopLevelDirectories()
+    @createCoreDirectories()
+    @createPackageJSON()
+    @createEnvSh()
+
+  createTopLevelDirectories: ->
+    createDirectories @path, 'core', 'components', 'public'
+
+  createCoreDirectories: ->
+    directories = ['config', 'frontend', 'layouts', 'lib']
+    createDirectories "#{ @path }/core", directories...
+
+  createPackageJSON: ->
+    template = fs.readFileSync("#{ SRC_PATH }/package.json.mustache", 'utf8')
+    json = Mustache.render(template, { @name })
+    fs.writeFileSync "#{ @path }/package.json", json
+
+  createEnvSh: ->
+    contents = fs.readFileSync "#{ SRC_PATH }/env.sh", 'utf8'
+    fs.writeFileSync "#{ @path }/env.sh", contents
+
+
+  ###########
+  # PRIVATE #
+  ###########
+
+  createDirectories = (path, directories...) ->
+    for directory in directories
+      mkdirp "#{ path }/#{ directory }"
