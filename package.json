@@ -15,5 +15,6 @@
   "bin": {
     "eliza": "./bin/eliza"
   },
+  "preferGlobal": true,
   "main": "index"
 }
