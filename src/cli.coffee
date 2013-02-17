@@ -1,6 +1,7 @@
-ROOT    = "#{ __dirname }/.."
 fs      = require 'fs'
 program = require 'commander'
+
+ROOT    = "#{ __dirname }/.."
 Project = require ROOT
 
 cwd = process.cwd()
