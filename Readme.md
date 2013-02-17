@@ -5,15 +5,15 @@ Wanted to create a very minimal framework for node.js custom to my thoughts and 
 ## Usage
 
 ```
-  Usage: eliza [options] [command]
+Usage: eliza [options] [command]
 
-  Commands:
+Commands:
 
-    new <name> [path]      Create a new application <name>
-    cmpt <cmpt> [path]     Generate component <cmpt>, optionally at <path>/components/<component>
+  new <name> [path]      Create a new application <name>
+  cmpt <cmpt> [path]     Generate component <cmpt>, optionally at <path>/components/<component>
 
-  Options:
+Options:
 
-    -h, --help     output usage information
-    -V, --version  output the version number
+  -h, --help     output usage information
+  -V, --version  output the version number
 ```
