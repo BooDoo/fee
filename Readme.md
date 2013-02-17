@@ -18,6 +18,8 @@ Options:
   -V, --version  output the version number
 ```
 
+## Commands
+
 ### new
 
 `eliza new <project> [path]`
