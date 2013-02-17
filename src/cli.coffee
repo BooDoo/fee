@@ -14,8 +14,8 @@ program
   .command('new <name> [path]')
   .description('Create a new application <name> in cwd or optionally at <path>')
   .action (name, path) ->
-    path = resolvePath(path)
-    Project.create(normalizePaths(path, name))
+    path = "#{ resolvePath(path) }/#{ name }"
+    Project.create(path)
 
 
 # New component
@@ -39,24 +39,6 @@ resolvePath = (path = cwd) ->
   return path if isAbsolute(path)
 
   "#{ cwd }/#{ path }"
-
-normalizePaths = (path1, path2) ->
-  path1 = stripTrailingSlash(path1) if hasTrailingSlash(path1)
-  path2 = stripLeadingSlash(path2)  if hasLeadingSlash(path2)
-
-  "#{ path1 }/#{ path2 }"
-
-stripTrailingSlash = (path) ->
-  path.slice(0, path.length - 1)
-
-stripLeadingSlash = (path) ->
-  path.slice(1, path.length)
-
-hasTrailingSlash = (path) ->
-  path.match(/\/$/)?
-
-hasLeadingSlash = (path) ->
-  path.match(/^\//)?
 
 # Kick off the CLI:
 program.parse(process.argv)
