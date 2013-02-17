@@ -10,10 +10,10 @@
     "commander": "1.1.1"
   },
   "devDependencies": {
-    "coffee-script": "*",
+    "coffee-script": "*"
   },
   "bin": {
-    "./bin/eliza"
-  }
+    "eliza": "./bin/eliza"
+  },
   "main": "index"
 }
