@@ -22,7 +22,7 @@ Options:
 
 `eliza new <project> [path]`
 
-`new` will generate a new application <project> in the current working directory, or at <path> if a path is supplied, i.e. the command:
+`new` will generate a new application `<project>` in the current working directory, or at `<path>` if a path is supplied, i.e. the command:
 
 `eliza new my-project ~/Desktop`
 
@@ -42,7 +42,7 @@ will generate:
 
 `eliza cmpt <cmpt> [path]`
 
-`cmpt` will generate a new component <cmpt> in the current working directory, or at <path> if a path is supplied, i.e. the command:
+`cmpt` will generate a new component `<cmpt>` in the current working directory, or at `<path>` if a path is supplied, i.e. the command:
 
 `eliza cmpt users ~/Desktop/myproject`
 
