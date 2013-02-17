@@ -20,6 +20,7 @@ class Project
     @createTopLevelDirectories()
     @createCoreDirectories()
     @createPackageJSON()
+    @createMakefile()
     @createEnvSh()
 
   createTopLevelDirectories: ->
@@ -33,6 +34,10 @@ class Project
     template = fs.readFileSync("#{ SRC_PATH }/package.json.mustache", 'utf8')
     json = Mustache.render(template, { @name })
     fs.writeFileSync "#{ @path }/package.json", json
+
+  createMakefile: ->
+    contents = fs.readFileSync "#{ SRC_PATH }/Makefile", 'utf8'
+    fs.writeFileSync "#{ @path }/Makefile", contents
 
   createEnvSh: ->
     contents = fs.readFileSync "#{ SRC_PATH }/env.sh", 'utf8'
