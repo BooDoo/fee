@@ -20,7 +20,7 @@ program.command('new <name> [path]').description('Create a new application <name
   return Project.create(path);
 });
 
-program.command('cmpt <cmpt> [path]').description('Generate component <cmpt>, optionally at <path>/components/<component>').action(function(component, path) {
+program.command('cmpt <cmpt> [path]').description('Generate component <cmpt>, optionally at <path>/components/<cmpt>').action(function(component, path) {
   var project;
   project = new Project(resolvePath(path));
   return project.component(component);

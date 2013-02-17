@@ -21,7 +21,7 @@ program
 # New component
 program
   .command('cmpt <cmpt> [path]')
-  .description('Generate component <cmpt>, optionally at <path>/components/<component>')
+  .description('Generate component <cmpt>, optionally at <path>/components/<cmpt>')
   .action (component, path) ->
     project = new Project resolvePath(path)
     project.component(component)

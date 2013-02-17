@@ -10,7 +10,7 @@ Usage: eliza [options] [command]
 Commands:
 
   new <name> [path]      Create a new application <name>
-  cmpt <cmpt> [path]     Generate component <cmpt>, optionally at <path>/components/<component>
+  cmpt <cmpt> [path]     Generate component <cmpt>, optionally at <path>/components/<cmpt>
 
 Options:
 
