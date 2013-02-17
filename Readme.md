@@ -17,3 +17,37 @@ Options:
   -h, --help     output usage information
   -V, --version  output the version number
 ```
+
+### new
+
+`eliza new <project> [path]`
+
+`new` will generate a new application <project> in the current working directory, or at <path> if a path is supplied, i.e. the command:
+
+`eliza new my-project ~/Desktop`
+
+will generate:
+
+```
+* /Users/ben/Desktop/my-project/
+  * components/
+  * core/
+  * public/
+  - env.sh
+  - Makefile
+  - package.json
+```
+
+### component
+
+`eliza cmpt <cmpt> [path]`
+
+`cmpt` will generate a new component <cmpt> in the current working directory, or at <path> if a path is supplied, i.e. the command:
+
+`eliza cmpt users ~/Desktop/myproject`
+
+will generate a `users` directory inside of `my-project/components` with the following sub directories:
+
+* coffeescripts
+* styles
+* templates
