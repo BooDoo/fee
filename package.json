@@ -1,0 +1,19 @@
+{
+  "name": "eliza",
+  "version": "0.0.1",
+  "description": "Minimal Node.js framework",
+  "keywords": [
+    "framework"
+  ],
+  "author": "Ben Reinhart <benjreinhart@gmail.com>",
+  "dependencies": {
+    "commander": "1.1.1"
+  },
+  "devDependencies": {
+    "coffee-script": "*",
+  },
+  "bin": {
+    "./bin/eliza"
+  }
+  "main": "index"
+}
