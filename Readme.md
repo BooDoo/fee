@@ -46,8 +46,13 @@ will generate:
 
 `eliza cmpt users ~/Desktop/myproject`
 
-will generate a `users` directory inside of `my-project/components` with the following sub directories:
+will generate a `users` directory inside of `my-project/components`. The result looks like
 
-* coffeescripts
-* styles
-* templates
+```
+* /Users/ben/Desktop/my-project/
+  * components/
+    * users/
+      * coffeescripts/
+      * styles/
+      * templates/
+```
