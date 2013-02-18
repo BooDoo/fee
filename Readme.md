@@ -51,7 +51,7 @@ will generate:
   - package.json
 ```
 
-### component
+### cmpt
 
 `eliza cmpt <cmpt> [path]`
 
