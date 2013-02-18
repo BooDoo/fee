@@ -15,9 +15,8 @@ cwd = process.cwd();
 
 program.version(JSON.parse(fs.readFileSync("" + ROOT + "/package.json", 'utf8')).version);
 
-program.command('new <name> [path]').description('Create a new application <name>').action(function(name, path) {
-  path = "" + (resolvePath(path)) + "/" + name;
-  return Project.create(path);
+program.command('new <name>').description('Create a new application <name>').action(function(name) {
+  return Project.create(resolvePath(name));
 });
 
 program.command('cmpt <cmpt> [path]').description('Generate component <cmpt>, optionally at <path>/components/<cmpt>').action(function(component, path) {

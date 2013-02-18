@@ -13,7 +13,7 @@ Usage: eliza [options] [command]
 
 Commands:
 
-  new <name> [path]      Create a new application <name>
+  new <name>             Create a new application <name>
   cmpt <cmpt> [path]     Generate component <cmpt>, optionally at <path>/components/<cmpt>
 
 Options:
@@ -26,11 +26,11 @@ Options:
 
 ### new
 
-`eliza new <project> [path]`
+`eliza new <project>`
 
-`new` will generate a new application `<project>` in the current working directory, or at `<path>` if a path is supplied, i.e. the command:
+`new` will generate a new application `<project>`. If `<project>` is a path (relative or absolute) then it will create the skeleton application at that path and use the basename as name of the application.
 
-`eliza new my-project ~/Desktop`
+`eliza new ~/Desktop/my-project`
 
 will generate:
 
@@ -48,7 +48,7 @@ will generate:
 
 `eliza cmpt <cmpt> [path]`
 
-`cmpt` will generate a new component `<cmpt>` in the current working directory, or at `<path>` if a path is supplied, i.e. the command:
+`cmpt` will generate a new component `<cmpt>` in the /components directory in the current working directory, or at `<path>/components/<cmpt>` if a path is supplied, i.e. the command:
 
 `eliza cmpt users ~/Desktop/myproject`
 

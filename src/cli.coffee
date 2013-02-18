@@ -11,11 +11,10 @@ program.version JSON.parse(fs.readFileSync("#{ ROOT }/package.json", 'utf8')).ve
 
 # New project
 program
-  .command('new <name> [path]')
+  .command('new <name>')
   .description('Create a new application <name>')
-  .action (name, path) ->
-    path = "#{ resolvePath(path) }/#{ name }"
-    Project.create(path)
+  .action (name) ->
+    Project.create(resolvePath(name))
 
 
 # New component
