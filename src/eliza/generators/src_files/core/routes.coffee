@@ -1,6 +1,6 @@
-{ Router, Util } = require 'eliza'
+app = (eliza = require 'eliza')()
 
-{ requireController } = Util
+{ requireController } = eliza.Util
 
-Router.get '/', (req, res) ->
+app.get '/', (req, res) ->
   res.send 200, 'HELLO WORLD!'

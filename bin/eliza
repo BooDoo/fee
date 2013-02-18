@@ -19,10 +19,14 @@ program.command('new <name>').description('Create a new application <name>').act
   return Project.create(resolvePath(name));
 });
 
+program.option('-R, --no-route', 'Do not add a route when generating a component');
+
 program.command('cmpt <cmpt> [path]').description('Generate component <cmpt>, optionally at <path>/components/<cmpt>').action(function(component, path) {
   var project;
   project = new Project(resolvePath(path));
-  return project.component(component);
+  return project.component(component, {
+    includeRoute: program.route
+  });
 });
 
 isAbsolute = function(path) {

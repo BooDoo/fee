@@ -16,6 +16,8 @@ program
   .action (name) ->
     Project.create(resolvePath(name))
 
+program
+  .option('-R, --no-route', 'Do not add a route when generating a component')
 
 # New component
 program
@@ -23,7 +25,7 @@ program
   .description('Generate component <cmpt>, optionally at <path>/components/<cmpt>')
   .action (component, path) ->
     project = new Project resolvePath(path)
-    project.component(component)
+    project.component(component, includeRoute: program.route)
 
 
 

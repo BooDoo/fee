@@ -4,6 +4,7 @@ mkdirp   = require 'mkdirp'
 Mustache = require 'mustache'
 
 SRC_PATH = "#{ __dirname }/src_files"
+TEMPLATE_PATH = "#{ SRC_PATH }/templates"
 
 class Project
   @create: (path) ->
@@ -13,21 +14,26 @@ class Project
     @name = Path.basename(@path)
 
   init: ->
-    mkdirp @path
+    createDirectory @path
 
     @_createTopLevelDirectories()
     @_createCoreDirectories()
     @_createPackageJSON()
+    @_createCoreFiles()
     @_createMakefile()
     @_createEnvSh()
 
     this
 
-  component: (component) ->
-    mkdirp(component = "#{ @path }/components/#{ component }")
-    mkdirp "#{ component }/templates"
-    mkdirp "#{ component }/coffeescripts"
-    mkdirp "#{ component }/styles"
+  component: (component, options={}) ->
+    componentPath = "#{ @path }/components/#{ component }"
+
+    createDirectory componentPath
+
+    if !options.bare
+      createDirectories componentPath, 'templates', 'coffeescripts', 'styles'
+
+    @_addRoute(component) if options.includeRoute
 
     this
 
@@ -43,9 +49,14 @@ class Project
     createDirectories "#{ @path }/core", directories...
 
   _createPackageJSON: ->
-    template = fs.readFileSync("#{ SRC_PATH }/package.json.mustache", 'utf8')
+    template = fs.readFileSync "#{ TEMPLATE_PATH }/package.json.mustache", 'utf8'
+
     json = Mustache.render(template, { @name })
     fs.writeFileSync "#{ @path }/package.json", json
+
+  _createCoreFiles: ->
+    routes = fs.readFileSync "#{ SRC_PATH }/core/routes.coffee", 'utf8'
+    fs.writeFileSync "#{ @path }/core/routes.coffee", routes
 
   _createMakefile: ->
     contents = fs.readFileSync "#{ SRC_PATH }/Makefile", 'utf8'
@@ -55,6 +66,12 @@ class Project
     contents = fs.readFileSync "#{ SRC_PATH }/env.sh", 'utf8'
     fs.writeFileSync "#{ @path }/env.sh", contents
 
+  _addRoute: (component) ->
+    template = fs.readFileSync "#{ TEMPLATE_PATH }/add_route.coffee.mustache", 'utf8'
+
+    route = Mustache.render template, { component }
+    fs.appendFileSync "#{ @path }/core/routes.coffee", route, 'utf8'
+
 
   ###########
   # PRIVATE #
@@ -62,7 +79,10 @@ class Project
 
   createDirectories = (path, directories...) ->
     for directory in directories
-      mkdirp "#{ path }/#{ directory }"
+      createDirectory "#{ path }/#{ directory }"
+
+  createDirectory = (path) ->
+    mkdirp path
 
 
 module.exports = Project
