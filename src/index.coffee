@@ -11,7 +11,6 @@ eliza = ->
 srcRequire = (path) -> require "#{ __dirname }/eliza/#{ path }"
 
 eliza.Util    = srcRequire 'util'
-eliza.Router  = srcRequire 'router'
 eliza.Project = srcRequire 'generators'
 
 module.exports = eliza
