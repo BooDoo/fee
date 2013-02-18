@@ -1,2 +1,2 @@
 require('coffee-script');
-exports.Project = require(__dirname + '/src/generators');
+module.exports = require(__dirname + '/src')

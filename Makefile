@@ -1,6 +1,6 @@
 COFFEE=./node_modules/.bin/coffee
 
-CLI=./src/cli.coffee
+CLI=./src/eliza/cli.coffee
 CLI_BIN=./bin/eliza
 
 generate-cli:
