@@ -1,6 +1,6 @@
 {
     "name": "eliza"
-  , "version": "0.0.1"
+  , "version": "0.0.1-dev"
   , "description": "Minimal web app generator"
 
   , "keywords":
