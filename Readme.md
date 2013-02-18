@@ -18,8 +18,9 @@ Commands:
 
 Options:
 
-  -h, --help     output usage information
-  -V, --version  output the version number
+  -h, --help      output usage information
+  -V, --version   output the version number
+  -R, --no-route  Do not add a route when generating a component
 ```
 
 ## Commands
@@ -62,3 +63,5 @@ will generate a `users` directory inside of `my-project/components`. The result 
       * styles/
       * templates/
 ```
+
+Supplying the `--no-route` flag will tell eliza not to add a route to the `core/routes.coffee` file for the component.
