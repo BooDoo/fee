@@ -29,6 +29,7 @@ class Project
     componentPath = "#{ @path }/components/#{ component }"
 
     createDirectory componentPath
+    @_addController componentPath, component
 
     if !options.bare
       createDirectories componentPath, 'templates', 'coffeescripts', 'styles'
@@ -65,6 +66,12 @@ class Project
   _createEnvSh: ->
     contents = fs.readFileSync "#{ SRC_PATH }/env.sh", 'utf8'
     fs.writeFileSync "#{ @path }/env.sh", contents
+
+  _addController: (componentPath, component) ->
+    template = fs.readFileSync "#{ TEMPLATE_PATH }/controller.coffee.mustache", 'utf8'
+
+    controller = Mustache.render template, { component }
+    fs.writeFileSync "#{ componentPath }/controller.coffee", controller
 
   _addRoute: (component) ->
     template = fs.readFileSync "#{ TEMPLATE_PATH }/add_route.coffee.mustache", 'utf8'

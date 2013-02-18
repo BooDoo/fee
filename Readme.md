@@ -68,6 +68,7 @@ will generate a `users` directory inside of `my-project/components`. The result 
       * coffeescripts/
       * styles/
       * templates/
+      - controller.coffee
 ```
 
 Supplying the `--no-route` flag will tell eliza not to add a route to the `core/routes.coffee` file for the component.
