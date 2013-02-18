@@ -39,10 +39,10 @@ will generate:
 * /Users/ben/Desktop/my-project/
   * components/
   * core/
-    * config
-    * frontend
-    * layouts
-    * lib
+    * config/
+    * frontend/
+    * layouts/
+    * lib/
     - routes.coffee
   * public/
   - env.sh
