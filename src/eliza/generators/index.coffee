@@ -64,8 +64,11 @@ class Project
     fs.writeFileSync "#{ @path }/Makefile", contents
 
   _createEnvSh: ->
-    contents = fs.readFileSync "#{ SRC_PATH }/env.sh", 'utf8'
-    fs.writeFileSync "#{ @path }/env.sh", contents
+    contents  = fs.readFileSync "#{ SRC_PATH }/env.sh", 'utf8'
+    envShPath = "#{ @path }/env.sh"
+
+    fs.writeFileSync envShPath, contents
+    fs.chmodSync envShPath, '744'
 
   _addController: (componentPath, component) ->
     template = fs.readFileSync "#{ TEMPLATE_PATH }/controller.coffee.mustache", 'utf8'
