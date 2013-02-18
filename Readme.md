@@ -20,6 +20,7 @@ Options:
 
   -h, --help      output usage information
   -V, --version   output the version number
+  -b, --bare      Only add a controller file for a component
   -R, --no-route  Do not add a route when generating a component
 ```
 
@@ -70,3 +71,5 @@ will generate a `users` directory inside of `my-project/components`. The result 
 ```
 
 Supplying the `--no-route` flag will tell eliza not to add a route to the `core/routes.coffee` file for the component.
+
+Supplying the `--bare` fag will tell eliza not to add any subdirectories under `<cmpt>`, only a controller file.
