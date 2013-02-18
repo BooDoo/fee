@@ -9,7 +9,7 @@ program = require('commander');
 
 ROOT = "" + __dirname + "/..";
 
-Project = require(ROOT);
+Project = require(ROOT).Project;
 
 cwd = process.cwd();
 
