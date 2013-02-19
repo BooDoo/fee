@@ -1,8 +1,9 @@
-fs       = require 'fs'
-Path     = require 'path'
-mkdirp   = require 'mkdirp'
-{ log }  = require '../util'
-Mustache = require 'mustache'
+fs        = require 'fs'
+Path      = require 'path'
+mkdirp    = require 'mkdirp'
+{ log }   = require '../util'
+Mustache  = require 'mustache'
+{ spawn } = require 'child_process'
 
 SRC_PATH = "#{ __dirname }/src_files"
 TEMPLATE_PATH = "#{ SRC_PATH }/templates"
@@ -25,6 +26,8 @@ class Application
     @_createEnvSh()
 
     log "New eliza application was created at #{ @path }"
+
+    @_installNpmPackages()
 
     this
 
@@ -90,6 +93,19 @@ class Application
     route = Mustache.render template, { component }
     fs.appendFileSync "#{ @path }/core/routes.coffee", route, 'utf8'
 
+  _installNpmPackages: ->
+    npm = spawn 'npm', ['install'], { cwd: @path }
+
+    log 'Installing npm dependencies...'
+
+    npm.stderr.on 'data', (data) ->
+      process.stderr.write data.toString()
+
+    npm.on 'exit', (code) ->
+      if code == 1
+        log 'Error installing npm dependencies'
+      else
+        log 'Finished installing npm dependencies'
 
   ###########
   # PRIVATE #
