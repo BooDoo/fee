@@ -2,7 +2,9 @@ fs      = require 'fs'
 program = require 'commander'
 
 ROOT = "#{ __dirname }/.."
-{ Application } = require ROOT
+
+Eliza       = require ROOT
+Application = require "#{ ROOT }/src/eliza/generators"
 
 cwd = process.cwd()
 
@@ -27,6 +29,16 @@ program
   .action (component, path) ->
     app = new Application resolvePath(path)
     app.component(component, includeRoute: program.route, bare: program.bare)
+
+# Start the server
+program
+  .command('server')
+  .description('Start the eliza server')
+  .action ->
+    if not process.env.APP_ROOT?
+      throw "Must define an environment variable `APP_ROOT` with the absolute path to your eliza application"
+
+    Eliza()
 
 
 

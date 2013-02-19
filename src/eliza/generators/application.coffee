@@ -46,7 +46,7 @@ class Application
     createDirectories @path, 'core', 'components', 'public', 'test'
 
   _createCoreDirectories: ->
-    directories = ['config', 'frontend', 'layouts', 'lib']
+    directories = ['config', 'config/initializers', 'frontend', 'layouts', 'lib']
     createDirectories "#{ @path }/core", directories...
 
   _createPackageJSON: ->
@@ -57,7 +57,10 @@ class Application
 
   _createCoreFiles: ->
     routes = readFile "#{ SRC_PATH }/core/routes.coffee"
+    server = readFile "#{ SRC_PATH }/core/server.coffee"
+
     writeFile "#{ @path }/core/routes.coffee", routes
+    writeFile "#{ @path }/core/server.coffee", server
 
   _createMakefile: ->
     contents = readFile "#{ SRC_PATH }/Makefile"

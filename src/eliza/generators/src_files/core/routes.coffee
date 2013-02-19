@@ -1,4 +1,4 @@
-app = (eliza = require 'eliza')()
+app = do (eliza = require('eliza'))
 
 { requireController } = eliza.Util
 
