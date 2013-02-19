@@ -1,6 +1,6 @@
 fs      = require 'fs'
 express = require 'express'
-{ log } = require 'eliza/util'
+{ log } = require './eliza/util'
 { env } = process
 
 getPort = -> env.PORT ? 3000
