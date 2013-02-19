@@ -2,6 +2,8 @@
 
 Wanted to create a very minimal tool for generating application shells custom to my thoughts and preferences on code/file structure for web app projects in node.js. I've been manually organizing and setting up all my apps at the beginning of a project and am tired of all the time I waste on setup.
 
+Eliza is basically a structural wrapper around express that is _convention over configuration_ based.
+
 ## Install
 
 `npm install -g git://github.com/benjreinhart/eliza.git`
@@ -42,10 +44,12 @@ will generate:
   * components/
   * core/
     * config/
+      * initializers/
     * frontend/
     * layouts/
     * lib/
     - routes.coffee
+    - server.coffee
   * public/
   - env.sh
   - Makefile
