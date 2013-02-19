@@ -66,8 +66,8 @@ runInitializers = (app) ->
 
   }
 
-exports = module.exports = eliza
+module.exports = eliza
 
-exports.Util       = require "#{ __dirname }/eliza/util"
-exports.express    = express
-exports.initialize = initialize
+eliza.Util       = require "#{ __dirname }/eliza/util"
+eliza.express    = express
+eliza.initialize = initialize
