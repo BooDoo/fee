@@ -3,7 +3,7 @@ program = require 'commander'
 
 ROOT = "#{ __dirname }/.."
 
-Eliza       = require ROOT
+eliza       = require ROOT
 Application = require "#{ ROOT }/src/eliza/generators"
 
 cwd = process.cwd()
@@ -38,7 +38,7 @@ program
     if not process.env.APP_ROOT?
       throw "Must define an environment variable `APP_ROOT` with the absolute path to your eliza application"
 
-    Eliza()
+    eliza.initialize()
 
 
 
