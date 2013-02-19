@@ -15,6 +15,7 @@ Commands:
 
   new <name>             Create a new application <name>
   cmpt <cmpt> [path]     Generate component <cmpt>, optionally at <path>/components/<cmpt>
+  server                 Start the eliza server
 
 Options:
 
@@ -75,6 +76,13 @@ Supplying the `--no-route` flag will tell eliza not to add a route to the `core/
 
 Supplying the `--bare` fag will tell eliza not to add any subdirectories under `<cmpt>`, only a controller file.
 
+### server
+
+`eliza server`
+
+Starts the eliza (express) server. The one caveat here is that it expects two environment variables to be set: `APP_ROOT` and `PORT`. eliza needs `APP_ROOT` to know where to look for files, etc. If `PORT` isn't in the environment, it'll default to 3000.
+
+The Makefile that is generated has a `dev` command which will run the `eliza` server command through the env.sh file. That file is where the environment variables should be defined.
 
 ## License
 
