@@ -6,7 +6,7 @@ Mustache = require 'mustache'
 SRC_PATH = "#{ __dirname }/src_files"
 TEMPLATE_PATH = "#{ SRC_PATH }/templates"
 
-class Project
+class Application
   @create: (path) ->
     (new this(path)).init()
 
@@ -50,34 +50,34 @@ class Project
     createDirectories "#{ @path }/core", directories...
 
   _createPackageJSON: ->
-    template = fs.readFileSync "#{ TEMPLATE_PATH }/package.json.mustache", 'utf8'
+    template = readFile "#{ TEMPLATE_PATH }/package.json.mustache"
 
     json = Mustache.render(template, { @name })
-    fs.writeFileSync "#{ @path }/package.json", json
+    writeFile "#{ @path }/package.json", json
 
   _createCoreFiles: ->
-    routes = fs.readFileSync "#{ SRC_PATH }/core/routes.coffee", 'utf8'
-    fs.writeFileSync "#{ @path }/core/routes.coffee", routes
+    routes = readFile "#{ SRC_PATH }/core/routes.coffee"
+    writeFile "#{ @path }/core/routes.coffee", routes
 
   _createMakefile: ->
-    contents = fs.readFileSync "#{ SRC_PATH }/Makefile", 'utf8'
-    fs.writeFileSync "#{ @path }/Makefile", contents
+    contents = readFile "#{ SRC_PATH }/Makefile"
+    writeFile "#{ @path }/Makefile", contents
 
   _createEnvSh: ->
-    contents  = fs.readFileSync "#{ SRC_PATH }/env.sh", 'utf8'
+    contents  = readFile "#{ SRC_PATH }/env.sh"
     envShPath = "#{ @path }/env.sh"
 
-    fs.writeFileSync envShPath, contents
+    writeFile envShPath, contents
     fs.chmodSync envShPath, '744'
 
   _addController: (componentPath, component) ->
-    template = fs.readFileSync "#{ TEMPLATE_PATH }/controller.coffee.mustache", 'utf8'
+    template = readFile "#{ TEMPLATE_PATH }/controller.coffee.mustache"
 
     controller = Mustache.render template, { component }
-    fs.writeFileSync "#{ componentPath }/controller.coffee", controller
+    writeFile "#{ componentPath }/controller.coffee", controller
 
   _addRoute: (component) ->
-    template = fs.readFileSync "#{ TEMPLATE_PATH }/add_route.coffee.mustache", 'utf8'
+    template = readFile "#{ TEMPLATE_PATH }/add_route.coffee.mustache"
 
     route = Mustache.render template, { component }
     fs.appendFileSync "#{ @path }/core/routes.coffee", route, 'utf8'
@@ -94,5 +94,11 @@ class Project
   createDirectory = (path) ->
     mkdirp path
 
+  readFile = (path) ->
+    fs.readFileSync path, 'utf8'
 
-module.exports = Project
+  writeFile = (args...) ->
+    fs.writeFileSync args...
+
+
+module.exports = Application

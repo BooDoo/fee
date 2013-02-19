@@ -28,9 +28,9 @@ Options:
 
 ### new
 
-`eliza new <project>`
+`eliza new <name>`
 
-`new` will generate a new application `<project>`. If `<project>` is a path (relative or absolute) then it will create the skeleton application at that path and use the basename as name of the application.
+`new` will generate a new application `<name>`. If `<name>` is a path (relative or absolute) then it will create the skeleton application at that path and use the basename as name of the application.
 
 `eliza new ~/Desktop/my-project`
 

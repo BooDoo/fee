@@ -2,19 +2,19 @@ fs      = require 'fs'
 program = require 'commander'
 
 ROOT = "#{ __dirname }/.."
-{ Project } = require ROOT
+{ Application } = require ROOT
 
 cwd = process.cwd()
 
 program.version JSON.parse(fs.readFileSync("#{ ROOT }/package.json", 'utf8')).version
 
 
-# New project
+# New application
 program
   .command('new <name>')
   .description('Create a new application <name>')
   .action (name) ->
-    Project.create(resolvePath(name))
+    Application.create(resolvePath(name))
 
 program
   .option('-b, --bare', 'Only add a controller file for a component')
@@ -25,8 +25,8 @@ program
   .command('cmpt <cmpt> [path]')
   .description('Generate component <cmpt>, optionally at <path>/components/<cmpt>')
   .action (component, path) ->
-    project = new Project resolvePath(path)
-    project.component(component, includeRoute: program.route, bare: program.bare)
+    app = new Application resolvePath(path)
+    app.component(component, includeRoute: program.route, bare: program.bare)
 
 
 

@@ -10,7 +10,7 @@ eliza = ->
 
 srcRequire = (path) -> require "#{ __dirname }/eliza/#{ path }"
 
-eliza.Util    = srcRequire 'util'
-eliza.Project = srcRequire 'generators'
+eliza.Util        = srcRequire 'util'
+eliza.Application = srcRequire 'generators'
 
 module.exports = eliza
