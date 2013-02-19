@@ -1,6 +1,7 @@
 fs       = require 'fs'
 Path     = require 'path'
 mkdirp   = require 'mkdirp'
+{ log }  = require '../util'
 Mustache = require 'mustache'
 
 SRC_PATH = "#{ __dirname }/src_files"
@@ -23,6 +24,8 @@ class Application
     @_createMakefile()
     @_createEnvSh()
 
+    log "New eliza application was created at #{ @path }"
+
     this
 
   component: (component, options={}) ->
@@ -35,6 +38,8 @@ class Application
       createDirectories componentPath, 'templates', 'coffeescripts', 'styles'
 
     @_addRoute(component) if options.includeRoute
+
+    log "Created component #{ component }"
 
     this
 
