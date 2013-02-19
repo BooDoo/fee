@@ -1,18 +1,23 @@
 fs      = require 'fs'
 express = require 'express'
+{ log } = require 'eliza/util'
 { env } = process
 
+getPort = -> env.PORT ? 3000
 requireCore = (path) -> require "#{ env.APP_ROOT }/core/#{ path }"
 
 bootApplication = (app) ->
+  log "Booting eliza server on port #{ getPort() }"
+
+  setupBaseConfiguration(app)
+
   requireCore('server')
   requireCore('routes')
 
-  setupBaseConfiguration(app)
   runInitializers(app)
 
 setupBaseConfiguration = (app) ->
-  app.set "port", env.PORT ? 3000
+  app.set "port", getPort()
   app.use app.router
   app.use express.static "#{ env.APP_ROOT }/public"
 
