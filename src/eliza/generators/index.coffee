@@ -43,7 +43,7 @@ class Application
   #############
 
   _createTopLevelDirectories: ->
-    createDirectories @path, 'core', 'components', 'public'
+    createDirectories @path, 'core', 'components', 'public', 'test'
 
   _createCoreDirectories: ->
     directories = ['config', 'frontend', 'layouts', 'lib']
