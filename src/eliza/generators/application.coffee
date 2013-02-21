@@ -9,13 +9,10 @@ SRC_PATH = "#{ __dirname }/src_files"
 TEMPLATE_PATH = "#{ SRC_PATH }/templates"
 
 class Application
-  @create: (path) ->
-    (new this(path)).init()
-
-  constructor: (@path) ->
+  constructor: (@path, @options) ->
     @name = Path.basename(@path)
 
-  init: ->
+  create: ->
     createDirectory @path
 
     @_createTopLevelDirectories()
@@ -31,7 +28,7 @@ class Application
 
     this
 
-  component: (component, options={}) ->
+  component: (component) ->
     componentPath = "#{ @path }/components/#{ component }"
 
     createDirectory componentPath
@@ -60,7 +57,7 @@ class Application
   _createPackageJSON: ->
     template = readFile "#{ TEMPLATE_PATH }/package.json.mustache"
 
-    json = Mustache.render(template, { @name })
+    json = Mustache.render(template, { @name, includeLatte: @options.includeLatte })
     writeFile "#{ @path }/package.json", json
 
   _createCoreFiles: ->

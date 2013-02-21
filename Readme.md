@@ -25,6 +25,7 @@ Options:
   -V, --version   output the version number
   -b, --bare      Only add a controller file for a component
   -R, --no-route  Do not add a route when generating a component
+  -L, --no-latte  Don't include the latte view engine
 ```
 
 ## Commands
@@ -55,6 +56,9 @@ will generate:
   - Makefile
   - package.json
 ```
+
+Supplying the `--no-latte` flag will not include the latte view rendering library.
+
 
 ### cmpt
 
