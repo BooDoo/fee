@@ -34,10 +34,10 @@ class Application
     createDirectory componentPath
     @_addController componentPath, component
 
-    if !options.bare
+    if !@options.bare
       createDirectories componentPath, 'templates', 'coffeescripts', 'styles'
 
-    @_addRoute(component) if options.includeRoute
+    @_addRoute(component) if @options.includeRoute
 
     log "Created component #{ component }"
 
