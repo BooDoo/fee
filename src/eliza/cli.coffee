@@ -6,7 +6,7 @@ program = require 'commander'
 cwd   = process.cwd()
 eliza = require ROOT
 
-generator = Path.join ROOT, 'src', 'eliza', 'generators'
+generator = Path.join ROOT, 'src', 'eliza', 'generators', 'application'
 
 packageJSON = Path.join ROOT, 'package.json'
 program.version JSON.parse(fs.readFileSync packageJSON, 'utf8').version
