@@ -1,15 +1,14 @@
 {
-    "name": "eliza"
+    "name": "elizajs"
   , "version": "0.0.1-dev"
-  , "description": "Minimal web app generator"
+  , "description": "Minimal framework wrapper around express"
+  , "author": "benjreinhart"
 
   , "keywords":
     [
         "framework"
       , "generator"
     ]
-
-  , "author": "Ben Reinhart <benjreinhart@gmail.com>"
 
   , "dependencies":
     {
@@ -25,6 +24,12 @@
   , "bin":
     {
         "eliza": "./bin/eliza"
+    }
+
+  , "repository":
+    {
+       "type": "git"
+      , "url": "git@github.com:benjreinhart/eliza.git"
     }
 
   , "preferGlobal": true
