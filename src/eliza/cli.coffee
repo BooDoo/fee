@@ -10,6 +10,12 @@ cwd = process.cwd()
 
 program.version JSON.parse(fs.readFileSync("#{ ROOT }/package.json", 'utf8')).version
 
+# Options
+program
+  .option('-r, --include-readme', 'Include a project README')
+  .option('-L, --no-latte', "Don't include the latte view engine")
+  .option('-b, --bare', 'Only add a controller file for a component')
+  .option('-R, --no-route', 'Do not add a route when generating a component')
 
 # New application
 program
@@ -17,12 +23,6 @@ program
   .description('Create a new application <name>')
   .action (name) ->
     new Application(resolvePath(name), formatOptions()).create()
-
-program
-  .option('-r, --include-readme', 'Include a project README')
-  .option('-L, --no-latte', "Don't include the latte view engine")
-  .option('-b, --bare', 'Only add a controller file for a component')
-  .option('-R, --no-route', 'Do not add a route when generating a component')
 
 # New component
 program
