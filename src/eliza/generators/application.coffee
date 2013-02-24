@@ -20,6 +20,7 @@ class Application
     @_createPackageJSON()
     @_createCoreFiles()
     @_createMakefile()
+    @_createReadme()
     @_createEnvSh()
 
     log "New eliza application was created at #{ @path }"
@@ -70,6 +71,13 @@ class Application
   _createMakefile: ->
     contents = readFile "#{ SRC_PATH }/Makefile"
     writeFile "#{ @path }/Makefile", contents
+
+  _createReadme: ->
+    return unless @options.includeReadme
+    template = readFile "#{ TEMPLATE_PATH }/README.md.mustache"
+
+    readme = Mustache.render template, { @name }
+    writeFile "#{ @path }/README.md", readme
 
   _createEnvSh: ->
     contents  = readFile "#{ SRC_PATH }/env.sh"

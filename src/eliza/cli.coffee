@@ -19,9 +19,10 @@ program
     new Application(resolvePath(name), formatOptions()).create()
 
 program
+  .option('-r, --include-readme', 'Include a project README')
+  .option('-L, --no-latte', "Don't include the latte view engine")
   .option('-b, --bare', 'Only add a controller file for a component')
   .option('-R, --no-route', 'Do not add a route when generating a component')
-  .option('-L, --no-latte', "Don't include the latte view engine")
 
 # New component
 program
@@ -51,6 +52,7 @@ formatOptions = ->
   bare: program.bare
   includeRoute: program.route
   includeLatte: program.latte
+  includeReadme: program.includeReadme
 
 isAbsolute = (path) ->
   path.match(/^\//)?
