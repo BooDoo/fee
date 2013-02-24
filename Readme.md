@@ -6,7 +6,7 @@ Eliza is basically a structural wrapper around express that is _convention over 
 
 ## Install
 
-`npm install -g git://github.com/benjreinhart/eliza.git`
+`npm install -g elizajs`
 
 ## Usage
 
