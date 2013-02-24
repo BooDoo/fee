@@ -1,14 +1,15 @@
 fs      = require 'fs'
+Path    = require 'path'
+ROOT    = Path.join __dirname, '..', '..'
 program = require 'commander'
 
-ROOT = "#{ __dirname }/.."
-
 eliza       = require ROOT
-Application = require "#{ ROOT }/src/eliza/generators"
+Application = require Path.join ROOT, 'src', 'eliza', 'generators'
 
 cwd = process.cwd()
 
-program.version JSON.parse(fs.readFileSync("#{ ROOT }/package.json", 'utf8')).version
+packageJSON = Path.join ROOT, 'package.json'
+program.version JSON.parse(fs.readFileSync packageJSON, 'utf8').version
 
 # Options
 program
@@ -60,7 +61,7 @@ isAbsolute = (path) ->
 resolvePath = (path = cwd) ->
   return path if isAbsolute(path)
 
-  "#{ cwd }/#{ path }"
+  Path.join cwd, path
 
 # Kick off the CLI:
 program.parse(process.argv)
