@@ -3,10 +3,10 @@ Path    = require 'path'
 ROOT    = Path.join __dirname, '..', '..'
 program = require 'commander'
 
-eliza       = require ROOT
-Application = require Path.join ROOT, 'src', 'eliza', 'generators'
+cwd   = process.cwd()
+eliza = require ROOT
 
-cwd = process.cwd()
+generator = Path.join ROOT, 'src', 'eliza', 'generators'
 
 packageJSON = Path.join ROOT, 'package.json'
 program.version JSON.parse(fs.readFileSync packageJSON, 'utf8').version
@@ -23,6 +23,7 @@ program
   .command('new <name>')
   .description('Create a new application <name>')
   .action (name) ->
+    Application = require generator
     new Application(resolvePath(name), formatOptions()).create()
 
 # New component
@@ -30,6 +31,7 @@ program
   .command('cmpt <cmpt> [path]')
   .description('Generate component <cmpt>, optionally at <path>/components/<cmpt>')
   .action (component, path) ->
+    Application = require generator
     app = new Application resolvePath(path), formatOptions()
     app.component(component)
 
