@@ -21,11 +21,12 @@ Commands:
 
 Options:
 
-  -h, --help      output usage information
-  -V, --version   output the version number
-  -b, --bare      Only add a controller file for a component
-  -R, --no-route  Do not add a route when generating a component
-  -L, --no-latte  Don't include the latte view engine
+  -h, --help            output usage information
+  -V, --version         output the version number
+  -r, --include-readme  Include a project README
+  -L, --no-latte        Don't include the latte view engine
+  -b, --bare            Only add a controller file for a component
+  -R, --no-route        Do not add a route when generating a component
 ```
 
 ## Commands
