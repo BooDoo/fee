@@ -19,7 +19,11 @@
       , "coffee-script" : ">=1.4.0"
     }
 
-  , "devDependencies": {}
+  , "devDependencies":
+    {
+        "async"   : ">=0.2.5"
+      , "request" : ">=2.14.0"
+    }
 
   , "bin":
     {
@@ -33,5 +37,6 @@
     }
 
   , "preferGlobal": true
+  , "license": "MIT"
   , "main": "index"
 }
