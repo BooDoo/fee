@@ -1,5 +1,5 @@
-var path  = require('path')
-  , eliza = path.join(__dirname, 'src');
+var path = require('path')
+  , fee  = path.join(__dirname, 'src');
 
 require('coffee-script');
-module.exports = require(eliza);
+module.exports = require(fee);

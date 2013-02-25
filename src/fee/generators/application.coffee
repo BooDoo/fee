@@ -1,9 +1,9 @@
-fs        = require 'fs'
-Path      = require 'path'
-mkdirp    = require 'mkdirp'
-{ log }   = require '../util'
-Mustache  = require 'mustache'
-{ spawn } = require 'child_process'
+fs       = require 'fs'
+Path     = require 'path'
+{log}    = require '../util'
+mkdirp   = require 'mkdirp'
+{spawn}  = require 'child_process'
+Mustache = require 'mustache'
 
 SRC_PATH = "#{ __dirname }/src_files"
 TEMPLATE_PATH = "#{ SRC_PATH }/templates"
@@ -23,7 +23,7 @@ class Application
     @_createReadme()
     @_createEnvSh()
 
-    log "New eliza application was created at #{ @path }"
+    log "New fee application was created at #{ @path }"
 
     @_installNpmPackages()
 

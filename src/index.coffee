@@ -1,13 +1,13 @@
 fs      = require 'fs'
+{log}   = require './fee/util'
+{env}   = process
 express = require 'express'
-{ log } = require './eliza/util'
-{ env } = process
 
 getPort = -> env.PORT ? 3000
 requireCore = (path) -> require "#{ env.APP_ROOT }/core/#{ path }"
 
 bootApplication = (app) ->
-  log "Booting eliza server on port #{ getPort() }"
+  log "Booting fee server on port #{ getPort() }"
 
   setupBaseConfiguration(app)
 
@@ -33,16 +33,16 @@ runInitializers = (app) ->
 
 
 ################
-# EXPORT ELIZA #
+# EXPORT fee #
 ################
 
-{ eliza, initialize } = do ->
+{ fee, initialize } = do ->
 
   # `app` will be used to store our express app
   # throughout the life-cycle of a running server
   #
   # It is defined in here so the only way to access
-  # it is through calling `eliza()`.
+  # it is through calling `fee()`.
   #
   app = null
 
@@ -54,20 +54,20 @@ runInitializers = (app) ->
       return app if app?
 
       # Otherwise, create the express
-      # instance and boot the eliza application
+      # instance and boot the fee application
       app = express()
       bootApplication(app)
 
       # return the express instance
       app
 
-    # eliza will just proxy this bad mother
-    eliza: -> app
+    # fee will just proxy this bad mother
+    fee: -> app
 
   }
 
-module.exports = eliza
+module.exports = fee
 
-eliza.Util       = require "#{ __dirname }/eliza/util"
-eliza.express    = express
-eliza.initialize = initialize
+fee.Util       = require "#{ __dirname }/fee/util"
+fee.express    = express
+fee.initialize = initialize

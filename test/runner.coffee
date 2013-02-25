@@ -4,7 +4,7 @@ request = require 'request'
 
 process.env.NODE_ENV = 'test'
 
-{eliza, TEST_APPLICATION} = process.env
+{FEE, TEST_APPLICATION} = process.env
 
 app = null
 
@@ -15,13 +15,13 @@ applicationENV = ->
 
 bootServer = (done) ->
   console.log()
-  app = cp.spawn eliza, [ 'server' ], { env: applicationENV() }
+  app = cp.spawn FEE, [ 'server' ], { env: applicationENV() }
 
   app.stdout.pipe process.stdout
   app.stderr.pipe process.stderr
 
   app.stdout.on 'data', (data) ->
-    if data.toString().match 'Booting eliza server on port 4000'
+    if data.toString().match 'Booting fee server on port 4000'
       app.stdout.removeAllListeners 'data'
       done()
 

@@ -1,5 +1,5 @@
 {
-    "name": "elizajs"
+    "name": "fee"
   , "version": "0.0.1-dev"
   , "description": "Minimal framework wrapper around express"
   , "author": "benjreinhart"
@@ -27,13 +27,13 @@
 
   , "bin":
     {
-        "eliza": "./bin/eliza"
+        "fee": "./bin/fee"
     }
 
   , "repository":
     {
        "type": "git"
-      , "url": "git@github.com:benjreinhart/eliza.git"
+      , "url": "git@github.com:benjreinhart/fee.git"
     }
 
   , "preferGlobal": true

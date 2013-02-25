@@ -1,14 +1,14 @@
-eliza       = require 'eliza'
-{ express } = eliza
+fee       = require 'fee'
+{express} = fee
 
-# use `eliza()` to get the
+# use `fee()` to get the
 # instance of the express app
-app = eliza()
+app = fee()
 
 
 #################################################################
 #                                                               #
-# Some configuration is handled by eliza:                       #
+# Some configuration is handled by fee:                       #
 #   * static path (i.e. /public)                                #
 #   * uses app.router                                           #
 #   * uses process.env.PORT or 3000 if process.env.PORT == null #

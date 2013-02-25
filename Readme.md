@@ -1,23 +1,23 @@
-# Eliza
+# fee
 
 Wanted to create a very minimal tool for generating application shells custom to my thoughts and preferences on code/file structure for web app projects in node.js. I've been manually organizing and setting up all my apps at the beginning of a project and am tired of all the time I waste on setup.
 
-Eliza is basically a structural wrapper around express that is _convention over configuration_ based.
+fee is basically a structural wrapper around express that is _convention over configuration_ based.
 
 ## Install
 
-`npm install -g elizajs`
+`npm install -g fee`
 
 ## Usage
 
 ```
-Usage: eliza [options] [command]
+Usage: fee [options] [command]
 
 Commands:
 
   new <name>             Create a new application <name>
   cmpt <cmpt> [path]     Generate component <cmpt>, optionally at <path>/components/<cmpt>
-  server                 Start the eliza server
+  server                 Start the fee server
 
 Options:
 
@@ -33,11 +33,11 @@ Options:
 
 ### new
 
-`eliza new <name>`
+`fee new <name>`
 
 `new` will generate a new application `<name>`. If `<name>` is a path (relative or absolute) then it will create the application at that path and use the basename as name of the application.
 
-`eliza new ~/Desktop/my-project`
+`fee new ~/Desktop/my-project`
 
 will generate:
 
@@ -63,11 +63,11 @@ Supplying the `--no-latte` flag will not include the latte view rendering librar
 
 ### cmpt
 
-`eliza cmpt <cmpt> [path]`
+`fee cmpt <cmpt> [path]`
 
 `cmpt` will generate a new component `<cmpt>` in the /components directory in the current working directory, or at `<path>/components/<cmpt>` if a path is supplied, i.e. the command:
 
-`eliza cmpt users ~/Desktop/myproject`
+`fee cmpt users ~/Desktop/myproject`
 
 will generate a `users` directory inside of `my-project/components`. The result looks like
 
@@ -81,17 +81,17 @@ will generate a `users` directory inside of `my-project/components`. The result 
       - controller.coffee
 ```
 
-Supplying the `--no-route` flag will tell eliza not to add a route to the `core/routes.coffee` file for the component.
+Supplying the `--no-route` flag will tell fee not to add a route to the `core/routes.coffee` file for the component.
 
-Supplying the `--bare` fag will tell eliza not to add any subdirectories under `<cmpt>`, only a controller file.
+Supplying the `--bare` fag will tell fee not to add any subdirectories under `<cmpt>`, only a controller file.
 
 ### server
 
-`eliza server`
+`fee server`
 
-Starts the eliza (express) server. The one caveat here is that it expects two environment variables to be set: `APP_ROOT` and `PORT`. eliza needs `APP_ROOT` to know where to look for files, etc. If `PORT` isn't in the environment, it'll default to 3000.
+Starts the fee (express) server. The one caveat here is that it expects two environment variables to be set: `APP_ROOT` and `PORT`. fee needs `APP_ROOT` to know where to look for files, etc. If `PORT` isn't in the environment, it'll default to 3000.
 
-The Makefile that is generated has a `dev` command which will run the `eliza` server command through the env.sh file. That file is where the environment variables should be defined.
+The Makefile that is generated has a `dev` command which will run the `fee` server command through the env.sh file. That file is where the environment variables should be defined.
 
 ## License
 

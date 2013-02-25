@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var path = require('path')
-  , cli  = path.join(__dirname, '..', 'src', 'eliza', 'cli.coffee');
+  , cli  = path.join(__dirname, '..', 'src', 'fee', 'cli.coffee');
 
 require('coffee-script');
 require(cli);

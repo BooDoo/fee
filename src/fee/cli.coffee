@@ -3,10 +3,10 @@ Path    = require 'path'
 ROOT    = Path.join __dirname, '..', '..'
 program = require 'commander'
 
-cwd   = process.cwd()
-eliza = require ROOT
+fee = require ROOT
+cwd = process.cwd()
 
-generator = Path.join ROOT, 'src', 'eliza', 'generators', 'application'
+generator = Path.join ROOT, 'src', 'fee', 'generators', 'application'
 
 packageJSON = Path.join ROOT, 'package.json'
 program.version JSON.parse(fs.readFileSync packageJSON, 'utf8').version
@@ -38,12 +38,12 @@ program
 # Start the server
 program
   .command('server')
-  .description('Start the eliza server')
+  .description('Start the fee server')
   .action ->
     if not process.env.APP_ROOT?
-      throw "Must define an environment variable `APP_ROOT` with the absolute path to your eliza application"
+      throw "Must define an environment variable `APP_ROOT` with the absolute path to your fee application"
 
-    eliza.initialize()
+    fee.initialize()
 
 
 
