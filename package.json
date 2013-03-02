@@ -1,6 +1,6 @@
 {
     "name": "fee"
-  , "version": "0.0.2-dev"
+  , "version": "0.0.3-dev"
   , "description": "Minimal framework wrapper around express"
   , "author": "benjreinhart"
 
@@ -13,7 +13,7 @@
   , "dependencies":
     {
         "mkdirp"        : ">=0.3.4"
-      , "express"       : "https://github.com/visionmedia/express/tarball/master"
+      , "express"       : ">=3.1.0"
       , "mustache"      : "0.7.2"
       , "commander"     : "1.1.1"
       , "coffee-script" : ">=1.4.0"
