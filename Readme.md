@@ -83,7 +83,7 @@ will generate a `users` directory inside of `my-project/components`. The result 
 
 Supplying the `--no-route` flag will tell fee not to add a route to the `core/routes.coffee` file for the component.
 
-Supplying the `--bare` fag will tell fee not to add any subdirectories under `<cmpt>`, only a controller file.
+Supplying the `--bare` flag will tell fee not to add any subdirectories under `<cmpt>`, only a controller file.
 
 ### server
 
